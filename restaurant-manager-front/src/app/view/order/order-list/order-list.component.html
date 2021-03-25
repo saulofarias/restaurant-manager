@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header">Listar Pedidos</div>
+  <div class="card-body">
+    <div class="new">
+      <a class="nav-link" [routerLink]="['/pedidos/cad']"
+        >Novo Pedido <span class="sr-only">(current)</span></a
+      >
+    </div>
+    <h5 class="card-title"></h5>
+    <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Código</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">Status</th>
+          <th scope="col">Total</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <th scope="row">{{ order.id }}</th>
+          <td> {{ order.number }} </td>
+          <td> {{ order.numTable }} </td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.amount }}</td>
+          <td>
+            <button
+              class="btn btn-primary mr-2"
+              (click)="closeOrder(order.id)"
+            >
+              Finalizar
+            </button>
+            <button  class="btn btn-danger"
+              (click)="cancelOrder(order.id)">
+             Cancelar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

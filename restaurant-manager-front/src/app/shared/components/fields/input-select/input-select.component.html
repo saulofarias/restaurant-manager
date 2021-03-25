@@ -1,0 +1,17 @@
+<div  class="form-group mr-2 col-12">
+  <label for="{{ controlName }}">{{ label }}</label>
+    <select 
+      class="form-control" 
+      [name]="controlName"
+      >
+      <option>Selecione</option>
+      <option *ngFor="let option of options" [value]="option.value"
+      (onSelectionChange)="change($event)"
+      >
+      {{ option.name }} 
+      </option>
+    </select>
+  <small id="{{ controlName }}" class="form-text text-muted">{{
+    message
+  }}</small>
+</div>

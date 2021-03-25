@@ -1,0 +1,12 @@
+<div class="form-group mr-2 col-12">
+  <label for="{{ controlName }}">{{ label }}</label>
+  <input
+    class="form-control"
+    [type]="type"
+    [name]="controlName"
+    [value]="value"
+  />
+  <small id="{{ controlName }}" class="form-text text-muted">{{
+    message
+  }}</small>
+</div>
