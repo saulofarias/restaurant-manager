@@ -72,4 +72,9 @@ public class OrderController {
 	public ResponseEntity<List<Table>> getTables(@PathVariable Integer size) {
 		return ResponseEntity.ok().body(orderService.getTables(size));
 	}
+
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<OrderResponseDTO> detail(@PathVariable Long id) {
+		return ResponseEntity.ok().body(orderService.detailOrder(id));
+	}
 }

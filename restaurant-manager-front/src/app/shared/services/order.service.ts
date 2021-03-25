@@ -17,6 +17,10 @@ export class OrderService {
     return this.httpClient.get<Array<Order>>(`${this.uri}orders`);
   }
 
+  getById(id){
+    return this.httpClient.get<Order>(`${this.uri}orders/detail/${id}`);
+  }
+
   getPendings(){
     return this.httpClient.get<Array<Order>>(`${this.uri}orders/pendings`);
   }

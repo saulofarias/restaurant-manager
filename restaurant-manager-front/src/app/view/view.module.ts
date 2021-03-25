@@ -10,6 +10,8 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from '../core/components/register/register.component';
 import { OrderCadComponent } from './order/order-cad/order-cad.component';
 import {ComponentsModule} from '../shared/components/components.module';
+import { OrderDetailComponent } from './order/order-detail/order-detail.component';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 
@@ -17,7 +19,8 @@ import {ComponentsModule} from '../shared/components/components.module';
   declarations: [
     OrderListComponent,
     ToastsComponent,
-    OrderCadComponent
+    OrderCadComponent,
+    OrderDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import {ComponentsModule} from '../shared/components/components.module';
     ReactiveFormsModule,
     FormsModule,
     ComponentsModule,
+    BrowserModule,
     RouterModule.forChild([
       {
         path: '',
@@ -42,6 +46,11 @@ import {ComponentsModule} from '../shared/components/components.module';
       {
         path: 'pedidos/cad',
         component: OrderCadComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'pedidos/detail',
+        component: OrderDetailComponent,
         canActivate: [AuthGuard],
       }
     ])

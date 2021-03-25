@@ -16,7 +16,7 @@
           <th scope="col">Mesa</th>
           <th scope="col">Status</th>
           <th scope="col">Total</th>
-          <th scope="col">Edit</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +27,11 @@
           <td>{{ order.status }}</td>
           <td>{{ order.amount }}</td>
           <td>
+            <button class="btn btn-warning mr-2"
+                    (click)="detailOrder(order.id)"
+             >
+              Detalhar
+            </button>
             <button
               class="btn btn-primary mr-2"
               (click)="closeOrder(order.id)"

@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">Detalhamento de Pedidos</div>
+  <div class="card-body">
+    <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+    <div class="card">
+      <div class="card-header">Pedido {{ orderId }}</div>
+      <div class="card-body">
+        <div class="container items">
+          <div class="form-group row">
+            <div class="detail">
+              <h3 class="title">Código</h3>
+              <div class="row">
+                <h4>{{ order.number }}</h4>
+              </div>
+            </div>
+            <div class="detail">
+              <h3 class="title">Mesa</h3>
+              <div class="row">
+                <h4>{{ order.numTable }}</h4>
+              </div>
+            </div>
+            <div class="detail">
+              <h3 class="title">Status</h3>
+              <div class="row">
+                <h4>{{ order.status }}</h4>
+              </div>
+            </div>
+            <div class="detail">
+              <h3 class="title">Total</h3>
+              <div class="row">
+                <h4>{{ order.amount }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of order.items">
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container b">
+      <button type="button" class="btn btn-primary" (click)="return()">
+        Voltar
+      </button>
+    </div>
+  </div>
+</div>

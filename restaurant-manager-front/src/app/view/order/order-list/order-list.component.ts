@@ -12,6 +12,7 @@ import { Order } from '../model/order';
 })
 export class OrderListComponent implements OnInit {
   orders: Array<Order>;
+  order: Order = new Order();
 
   constructor(
     private orderService: OrderService,
@@ -71,6 +72,21 @@ export class OrderListComponent implements OnInit {
       },
       error: (err) => {
         this.toastService.error('Erro ao realizar procedimento!');
+      },
+    });
+  }
+
+  detailOrder(id) {
+    this.eventDataService.setEvent(id);
+    this.orderService.getById(id).subscribe({
+      next: (order) => {
+        if (order) {
+          this.order = order;
+          this.router.navigate(['pedidos/detail']);
+        }
+      },
+      error: (err) => {
+        this.toastService.error('Erro ao buscar dados do Pedido!');
       },
     });
   }
