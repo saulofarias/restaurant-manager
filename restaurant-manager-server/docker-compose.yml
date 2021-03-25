@@ -3,7 +3,7 @@ services:
   app:
     container_name: app-springboot-postgresql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://dbpostgresql:5432/customer
+      SPRING_DATASOURCE_URL: jdbc:postgresql://dbpostgresql:5432/restaurant
     image: app-springboot-postgresql
     build: ./
     ports:
@@ -15,6 +15,6 @@ services:
     ports:
       - "5435:5435"
     environment:
-      - POSTGRES_DB=customer
+      - POSTGRES_DB=restaurant
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
