@@ -17,9 +17,11 @@ import { OrderRequest } from '../model/request';
 export class OrderCadComponent implements OnInit {
   tables: Array<Table> = [];
   items: Array<Product> = [];
+  itemsOrder: Array<Product> = [];
+  item: Product = new Product();
+  product: Product = new Product();
   orderNumber;
   tabValue: number;
-  product: Product = new Product();
   products: Array<Product> = [];
   request: OrderRequest = new OrderRequest();
   total: number = 0;
@@ -48,13 +50,25 @@ export class OrderCadComponent implements OnInit {
     });
   }
 
+  getItemById(id) {
+    this.productService.getById(id).subscribe({
+      next: (product) => {
+        if (product) this.itemsOrder.push(product);
+      },
+      error: (err) => {
+        this.toastService.error('Erro ao buscar Item!');
+      },
+    });
+  }
+
   setTotal(id) {
     this.productService.getById(id).subscribe({
       next: (product) => {
         if (product) {
           this.product = product;
           this.total += product.price;
-      }},
+        }
+      },
       error: (err) => {
         this.toastService.error('Erro ao buscar Item!');
       },
@@ -89,8 +103,10 @@ export class OrderCadComponent implements OnInit {
     //console.log(this.request);
     this.orderService.save(this.request).subscribe({
       next: (order) => {
-        if (order) 
-        this.toastService.success('Pedido criado com sucesso!');
+        if (order) {
+          this.toastService.success('Pedido criado com sucesso!');
+          this.router.navigate(['pedidos']);
+        }
       },
       error: (err) => {
         this.toastService.error('Erro ao buscar Número Pedido!');
@@ -111,7 +127,8 @@ export class OrderCadComponent implements OnInit {
       //this.products.includes(event.target.value);
       this.product.id = event.target.value;
       this.products.push(this.product);
-      this.setTotal(this.product.id); 
+      this.setTotal(this.product.id);
+      this.getItemById(this.product.id);
     }
   }
 }

@@ -1,45 +1,74 @@
 <div class="card">
-  <div class="card-header">Novo Pedido
-  </div>
+  <div class="card-header">Novo Pedido</div>
   <div class="card-body">
-    <h5 class="card-title">Total Pedido {{ total }}</h5>
     <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
-            <div class="container">
-              <div class="form-group row">
-                <app-input
-                  class="col-4"
-                  label="Numero Pedido*"
-                  name="numero"
-                  controlName="numero"
-                  message=""
-                  [value]="orderNumber.number"
-                  ngDefaultControl
-                  required
-                ></app-input>
-                <app-input-select
-                  class="col-2"
-                  label="Mesa*"
-                  name="mesas"
-                  message=""
-                  [options]="tables"
-                  ngDefaultControl
-                  (change)="tableValue($event)"
-                  required
-                ></app-input-select>
-                <app-input-select
-                  class="col-4"
-                  label="Item*"
-                  name="item"
-                  message=""
-                  [options]="items"
-                  ngDefaultControl
-                  (change)="itemValue($event)"
-                  required
-                ></app-input-select>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary" (click)="save()">
-              Salvar
-            </button>
+    <div class="card">
+      <div class="card-header">Pedido {{ orderNumber.number }}</div>
+      <div class="card-body">
+        <div class="container">
+          <div class="form-group row">
+            <app-input
+              class="col-4"
+              label="Numero Pedido*"
+              name="numero"
+              controlName="numero"
+              message=""
+              [value]="orderNumber.number"
+              ngDefaultControl
+              required
+            ></app-input>
+            <app-input-select
+              class="col-2"
+              label="Mesa*"
+              name="mesas"
+              message=""
+              [options]="tables"
+              ngDefaultControl
+              (change)="tableValue($event)"
+              required
+            ></app-input-select>
+            <app-input-select
+              class="col-4"
+              label="Item*"
+              name="item"
+              message=""
+              [options]="items"
+              ngDefaultControl
+              (change)="itemValue($event)"
+              required
+            ></app-input-select>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of itemsOrder">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class="card">
+        <div class="card-header">Total Pedido</div>
+        <div class="card-body ">
+          <h5 class="card-title title">R$ {{ total }}</h5>
+        </div>
+    </div>
+    <div class="container b">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
+    </div>
   </div>
 </div>

@@ -1,0 +1,27 @@
+.b {
+  margin-top: 5px;
+}
+
+.tab {
+  width: 50rem;
+  margin-top: 5px;
+}
+
+.total {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.card {
+  margin-top: 5px;
+}
