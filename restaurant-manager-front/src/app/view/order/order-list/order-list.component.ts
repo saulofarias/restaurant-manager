@@ -21,8 +21,8 @@ export class OrderListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.getPendings();
-    this.getAll();
+    this.getPendings();
+    //this.getAll();
   }
 
   getAll() {
